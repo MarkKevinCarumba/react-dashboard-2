@@ -13,7 +13,7 @@
 
 .App {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -24,6 +24,7 @@
     #ffcfd1 51.55%,
     #f3c6f1 90.85%
   );
+  color: var(--black);
 }
 
 .AppGlass {
@@ -33,6 +34,6 @@
     background-color: var(--glass);
     border-radius: 1rem;
     gap: 16px;
-    grid-template-columns: 11rem, auto, 20rem;
-    overflow: hidden;
-}
+    grid-template-columns: 11rem auto 20rem;
+    overflow: hidden; 
+} 
