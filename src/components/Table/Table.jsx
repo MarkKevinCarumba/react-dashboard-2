@@ -10,11 +10,14 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { div } from "framer-motion/client";
+import "./Table.css";
 
+// Headers
 function createData(name, trackingId, date, status) {
   return { name, trackingId, date, status };
 }
 
+// Rows
 const rows = [
   createData("Lasania Chiken Fri", 18908424, "2 March 2022", "Approved"),
   createData("Big Baza Bang ", 18908424, "2 March 2022", "Pending"),
@@ -22,24 +25,45 @@ const rows = [
   createData("Cupcake", 18908421, "2 March 2022", "Delivered"),
 ];
 
-const makeStyle= 
+// Function for Status
+const statusStyle = (status) => {
+  if (status === "Approved") {
+    return {
+      background: "rgb(145 254 159 / 47%)",
+      color: "green",
+    };
+  } else if (status === "Pending") {
+    return {
+      background: "#ffadad8f",
+      color: "red",
+    };
+  } else {
+    return {
+      background: "#59bfff",
+      color: "white",
+    };
+  }
+};
 
 export default function BasicTable() {
   return (
     <div className="table">
       <h3>Recent Orders</h3>
-      <TableContainer component={Paper}>
+      <TableContainer
+        component={Paper}
+        style={{ boxShadow: "0px 13px 20px 0px #80808029" }}
+      >
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+              <TableCell>Product</TableCell>
+              <TableCell align="left">Tracking ID</TableCell>
+              <TableCell align="left">Date</TableCell>
+              <TableCell align="left">Status</TableCell>
+              <TableCell align="left"></TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody style={{ color: "white" }}>
             {rows.map((row) => (
               <TableRow
                 key={row.name}
@@ -48,10 +72,16 @@ export default function BasicTable() {
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell align="left">{row.trackingId}</TableCell>
+                <TableCell align="left">{row.date}</TableCell>
+                <TableCell align="left">
+                  <span className="status" style={statusStyle(row.status)}>
+                    {row.status}
+                  </span>
+                </TableCell>
+                <TableCell align="left" className="details">
+                  Details
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
