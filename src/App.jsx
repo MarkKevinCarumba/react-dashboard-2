@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
 import "./App.css";
 import MainDashboard from "./components/MainDashboard/MainDashboard";
+import RightSide from "./components/RightSide/RightSide";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <div className="AppGlass">
         <Sidebar />
         <MainDashboard />
-        <div></div>
+        <RightSide />
       </div>
     </div>
   );
